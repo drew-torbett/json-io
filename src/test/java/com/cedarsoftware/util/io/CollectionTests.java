@@ -345,7 +345,9 @@ public class CollectionTests {
         String json = TestUtil.toJson(arrayList, writeOptions);
         TestUtil.printLine(json);
         String className = CollectionTests.class.getName();
-        assertEquals("{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"" + className + "$TestEnum4\",\"age\":21,\"foo\":\"bar\",\"name\":\"B\"}]}", json);
+	String expectedJson1 = "{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"" + className + "$TestEnum4\",\"age\":21,\"foo\":\"bar\",\"name\":\"B\"}]}";
+	String expectedJson2 = "{\"@type\":\"java.util.ArrayList\",\"@items\":[{\"@type\":\"" + className + "$TestEnum4\",\"foo\":\"bar\",\"age\":21,\"name\":\"B\"}]}";
+        assertTrue(json.equals(expectedJson1) || json.equals(expectedJson2), "JSON does not match any expected form");
     }
 
     @Test
